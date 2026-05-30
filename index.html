@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        (function() {
+            // 1. 获取浏览器/系统语言（并转为小写防止大小写不一致）
+            var userLang = (navigator.language || navigator.userLanguage).toLowerCase();
+            
+            // 2. 判断语言并设置目标路径
+            var targetPath = "/en"; // 默认设置为英文
+            
+            if (userLang.indexOf('zh') !== -1) {
+                targetPath = "/cn"; // 如果包含 'zh' (中文)，则去中文版
+            }
+            
+            // 3. 执行跳转
+            window.location.href = targetPath;
+        })();
+    </script>
+    <style>
+        /* 防御性样式：如果跳转延迟，给用户一个干净的等待画面 */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #555;
+        }
+        .loading {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <p>Loading / 正在加载...</p>
+    </div>
+</body>
+</html>
